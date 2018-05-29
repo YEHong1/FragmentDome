@@ -1,45 +1,39 @@
-package cn.edu.gdmec.android.myapplication;
+package administrator.example.com.fragmentdemo;
 
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 /**
- * Created by apple on 18/5/22.
+ * Created by Administrator on 2018/5/17.
  */
 
-public class MyFragmentAdapter extends FragmentPagerAdapter {
+public class MyFragmentAdapter  extends FragmentPagerAdapter{
 
     private List<Fragment> fragments = new ArrayList<>();
-    private List<String> fragmentTitles = new ArrayList<>();
-
+    private  List<String> fragmentTitles = new ArrayList<>();
 
     public MyFragmentAdapter(FragmentManager fm, List<Fragment> fragments) {
         super(fm);
         this.fragments = fragments;
     }
 
-    public MyFragmentAdapter(FragmentManager fm,List<Fragment> fragments,
-                             List<String> fragmentTitles){
+    public  MyFragmentAdapter(FragmentManager fm, List<Fragment> fragments,
+                              List<String> fragmentTitles){
         super(fm);
         this.fragments = fragments;
         this.fragmentTitles = fragmentTitles;
 
     }
-
     @Override
     public Fragment getItem(int position) {
         return fragments.get(position);
-    }
-
-    @Override
-    public int getCount() {
-        return fragments.size();
     }
 
     @Override
@@ -47,12 +41,15 @@ public class MyFragmentAdapter extends FragmentPagerAdapter {
         super.destroyItem(container, position, object);
     }
 
-    @Nullable
     @Override
-    public CharSequence getPageTitle(int position) {
-        if (fragmentTitles != null){
+    public int getCount() {
+        return fragments.size();
+    }
+    @Override
+    public CharSequence getPageTitle(int position){
+        if (fragmentTitles!=null){
             return fragmentTitles.get(position);
-        }else {
+        }else{
             return "";
         }
     }
